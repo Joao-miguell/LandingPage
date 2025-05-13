@@ -13,7 +13,7 @@ body {
 }
 
 .navbar {
-  background-color: var(--branco);
+  background-color: #f6c3b6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,12 +25,14 @@ body {
 }
 
 .navbar .logo {
-  font-size: 1.5rem;
+  font-family: 'Meow Script', cursive;
+  font-size: 2rem;
   font-weight: bold;
-  color: var(--tom-terroso);
+  color: #794f38;
 }
 
 .navbar nav a {
+  font-family: 'Spectral', sans-serif;
   margin-left: 1.5rem;
   text-decoration: none;
   color: #794f38;
@@ -85,6 +87,7 @@ body {
 
 
 .sobre-texto {
+  font-family: 'Poetsen One', sans-serif;
   flex: 1;
   color: #794f38;
 }
@@ -111,7 +114,7 @@ body {
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
-  background-color: var(--branco);
+  background-color: #ffe2da;
   min-height: 600px; /* <-- Aumentado */
   display: flex;
   flex-direction: column;
@@ -216,7 +219,7 @@ body {
 }
 
 .slogan {
-  background-color: #d49469;
+  background-color: #f6c3b6;
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 25px;
@@ -339,7 +342,7 @@ body {
 }
 
 .rodape-personalizado {
-  background-color: #d49469;
+  background-color: #f6c3b6;
   color: white;
   padding: 40px 20px 20px;
   font-family: 'Arial', sans-serif;
@@ -437,12 +440,15 @@ hr {
 
 /* Título dos cursos */
 .curso-card h3 {
+  font-size: 25px;
   color: #794f38;
   font-weight: bold;
+  font-family: 'Harmattan', sans-serif;
 }
 
 /* Texto de descrição dos cursos */
 .curso-card p {
+  font-family: 'Spectral', sans-serif;
   color: #d49469;
 }
 
@@ -452,5 +458,44 @@ hr {
 
 #feedbacks .depoimento-card strong {
   color: #794f38; /* Cor do nome da aluna */
+}
+
+.sobre-estilizada {
+  background-color: #ffe2da; /* cor de fundo suave, troque se quiser */
+  border-radius: 30px;       /* bordas arredondadas */
+  padding: 40px;             /* espaço interno */
+  max-width: 1000px;
+  margin: 40px auto;         /* centraliza horizontalmente */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* sombra leve */
+}
+
+@media (max-width: 768px) {
+  .sobre-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .curso-card {
+    min-height: auto;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar nav a {
+    margin: 0.5rem 0;
+  }
+
+  .secao-inicio {
+    padding: 2rem 1rem;
+  }
+
+  .texto-sobreposto {
+    position: static;
+    transform: none;
+    margin-top: 1rem;
+  }
 }
 
