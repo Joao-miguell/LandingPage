@@ -189,19 +189,19 @@ body {
 
 .container-inicio {
   position: relative;
-  max-width: 1000px;
+  max-width: 750px;
   width: 100%;
 }
 
 .imagem-inicio {
   width: 100%;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .texto-sobreposto {
   position: absolute;
-  bottom: 10%; /* <- ajusta a distância do fundo */
+  bottom: 5%; 
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -216,7 +216,7 @@ body {
 }
 
 .slogan {
-  background-color: var(--tom-terroso);
+  background-color: #d49469;
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 25px;
@@ -231,7 +231,7 @@ body {
   text-align: center;
   font-size: 2.2rem; /* aumenta o tamanho */
   margin-bottom: 2rem;
-  color: var(--tom-terroso); /* opcional: para destacar */
+  color: #d49469; /* opcional: para destacar */
 }
 
 .section h2::after {
@@ -261,5 +261,196 @@ body {
 .logo img {
   height: 50px; /* ajuste conforme o tamanho desejado */
   width: auto;
+}
+
+.rodape {
+  background-color: #d49469;
+  color: white;
+  padding: 30px 20px 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+.rodape-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.rodape-info h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.rodape-info p {
+  margin: 5px 0;
+}
+
+.rodape-contato p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.botao-social {
+  display: inline-block;
+  margin: 0 8px;
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.botao-social img {
+  width: 100%;
+  height: auto;
+}
+
+.botao-social:hover {
+  transform: scale(1.1);
+}
+
+.rodape-copy {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.botao-social {
+  background-color: white;
+  color: #d49469;
+  font-size: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin: 0 8px;
+  transition: transform 0.3s;
+}
+
+.botao-social:hover {
+  transform: scale(1.1);
+  color: #794f38;
+}
+
+.rodape-personalizado {
+  background-color: #d49469;
+  color: white;
+  padding: 40px 20px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.container-rodape {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.linha-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.coluna-rodape {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+.logo-rodape {
+  font-family: 'MoonTime', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.link-rodape {
+  color: white;
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 8px;
+  transition: color 0.3s;
+}
+
+.link-rodape:hover {
+  color: #f6c3b6;
+}
+
+.links-rapidos ul {
+  list-style: none;
+  padding: 0;
+}
+
+.links-rapidos li {
+  margin-bottom: 8px;
+}
+
+.linha-rodape-inferior {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy {
+  font-size: 14px;
+}
+
+.icones-sociais a {
+  color: white;
+  margin-left: 10px;
+  font-size: 20px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.icones-sociais a:hover {
+  transform: scale(1.2);
+  color: #f6c3b6;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 30px 0 15px;
+}
+
+#cursos .btn {
+  background-color: #f6c3b6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#cursos .btn:hover {
+  background-color: #e8b0a8; /* tom um pouco mais escuro ao passar o mouse */
+  transform: scale(1.05);
+}
+
+/* Título dos cursos */
+.curso-card h3 {
+  color: #794f38;
+  font-weight: bold;
+}
+
+/* Texto de descrição dos cursos */
+.curso-card p {
+  color: #d49469;
+}
+
+#feedbacks .depoimento-card p {
+  color: #ffff; /* Altere essa cor conforme desejar */
+}
+
+#feedbacks .depoimento-card strong {
+  color: #794f38; /* Cor do nome da aluna */
 }
 
