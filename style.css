@@ -77,7 +77,12 @@ body {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
+  max-width: 1000px; /* Define uma largura máxima */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
+
+
+
 
 .sobre-texto {
   flex: 1;
@@ -107,7 +112,12 @@ body {
   padding: 1.5rem;
   text-align: center;
   background-color: var(--branco);
+  min-height: 600px; /* <-- Aumentado */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 
 .curso-img {
   width: 100%;
@@ -119,6 +129,8 @@ body {
   align-items: center;
   color: #aaa;
   font-style: italic;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .depoimentos-grid {
@@ -189,12 +201,14 @@ body {
 
 .texto-sobreposto {
   position: absolute;
-  top: 50%;
+  bottom: 10%; /* <- ajusta a distância do fundo */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   text-align: center;
   color: #333;
 }
+
+
 
 .logo-inicio {
   max-width: 900px;
@@ -210,3 +224,42 @@ body {
   font-size: 1.1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+.section h2,
+#depoimentos h2,
+#contato h2 {
+  text-align: center;
+  font-size: 2.2rem; /* aumenta o tamanho */
+  margin-bottom: 2rem;
+  color: var(--tom-terroso); /* opcional: para destacar */
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--tom-terroso);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.imagem-sobre {
+  width: 100%;
+  max-width: 350px; /* ajuste esse valor conforme preferir */
+  height: auto;
+  border-radius: 12px; /* mantém cantos levemente arredondados, mas não deixa redondo */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* opcional: sombra para destacar */
+}
+
+@media (max-width: 600px) {
+  .imagem-sobre {
+    max-width: 100%;
+  }
+}
+
+.logo img {
+  height: 50px; /* ajuste conforme o tamanho desejado */
+  width: auto;
+}
+
