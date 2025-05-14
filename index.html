@@ -16,14 +16,16 @@
 
   <!-- Cabeçalho -->
   <header class="navbar">
-    <div class="logo">Francieli Carrard</div>
-    <nav>
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#cursos">Cursos</a>
-      <a href="#feedbacks">Feedbacks</a>
-    </nav>
-  </header>
+  <div class="logo">Francieli Carrard</div>
+  <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  <nav class="nav-links">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre mim</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#feedbacks">Feedbacks</a>
+  </nav>
+</header>
+
 
   <!-- Seção Início com imagem e texto sobreposto -->
   <section id="inicio" class="secao-inicio">
@@ -161,14 +163,27 @@
 
   <!-- JavaScript -->
   <script>
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const destino = document.querySelector(this.getAttribute('href'));
-        destino.scrollIntoView({ behavior: 'smooth' });
-      });
+  // Rolagem suave ao clicar nos links internos da navbar
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const destino = document.querySelector(this.getAttribute('href'));
+      destino.scrollIntoView({ behavior: 'smooth' });
+
+      // Fecha o menu após o clique no link
+      navLinks.classList.remove('show');
     });
-  </script>
+  });
+
+  // Abrir/fechar menu mobile
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
 
 </body>
 </html>

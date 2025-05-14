@@ -13,7 +13,7 @@ body {
 }
 
 .navbar {
-  background-color: #f6c3b6;
+  background-color: #ffe2da;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,14 +28,14 @@ body {
   font-family: 'Meow Script', cursive;
   font-size: 2rem;
   font-weight: bold;
-  color: #794f38;
+  color: #d49469;
 }
 
 .navbar nav a {
   font-family: 'Spectral', sans-serif;
   margin-left: 1.5rem;
   text-decoration: none;
-  color: #794f38;
+  color: #d49469;
   font-weight: 500;
 }
 
@@ -89,7 +89,7 @@ body {
 .sobre-texto {
   font-family: 'Poetsen One', sans-serif;
   flex: 1;
-  color: #794f38;
+  color: #d49469;
 }
 
 .sobre-imagem .imagem-placeholder {
@@ -221,10 +221,10 @@ body {
 .slogan {
   background-color: #f6c3b6;
   color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 20px;
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -234,7 +234,7 @@ body {
   text-align: center;
   font-size: 2.2rem; /* aumenta o tamanho */
   margin-bottom: 2rem;
-  color: #d49469; /* opcional: para destacar */
+  color: #794f38; /* opcional: para destacar */
 }
 
 .section h2::after {
@@ -498,4 +498,120 @@ hr {
     margin-top: 1rem;
   }
 }
+
+/* Menu hamburguer visível apenas em telas pequenas */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #d49469;
+  cursor: pointer;
+}
+
+/* Esconde o menu em telas pequenas até clicar */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px; /* abaixo do header */
+    right: 0;
+    background-color: #ffe2da;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .nav-links a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .nav-links.show {
+    max-height: 300px; /* ou o suficiente para mostrar todos os links */
+  }
+}
+
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #d49469;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  z-index: 1100;
+  display: none; /* Esconde no desktop */
+}
+
+/* Ajuste da posição do menu hamburguer */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #d49469;
+  cursor: pointer;
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  z-index: 1001;
+}
+
+/* Oculta nav-links no mobile */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    background-color: #ffe2da;
+    flex-direction: column;
+    align-items: center; /* centraliza os links */
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar .logo {
+    flex: 1 0 100%;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+}
+
 
