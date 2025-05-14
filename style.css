@@ -88,7 +88,7 @@ body {
 
 .sobre-texto {
   font-family: 'Poetsen One', sans-serif;
-  flex: 1;
+  flex:5;
   color: #d49469;
 }
 
@@ -110,16 +110,17 @@ body {
 }
 
 .curso-card {
-  border: 1px solid #ddd;
+  border: 3px solid #ddd;
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
-  background-color: #ffe2da;
-  min-height: 600px; /* <-- Aumentado */
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: transparent;
 }
+
 
 
 .curso-img {
@@ -144,34 +145,14 @@ body {
 }
 
 .depoimento-card {
-  background-color: var(--rosa-claro);
+  background-color: transparent; /* Removendo o fundo */
   padding: 2rem;
   border-radius: 8px;
   font-style: italic;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border: 2px solid #ddd; /* Adicionando borda */
 }
 
-.formulario-contato {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
-  margin: 2rem auto 0;
-}
-
-.formulario-contato input,
-.formulario-contato textarea {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-  resize: vertical;
-}
-
-.formulario-contato button {
-  align-self: flex-start;
-}
 
 .footer {
   background-color: #794f38;
@@ -183,8 +164,8 @@ body {
 
 /* Nova seção início com imagem e sobreposição */
 .secao-inicio {
-  background-color: #f7f8fc;
-  padding: 6rem 2rem 4rem;
+  background-color: #ffffff;
+  padding: 6rem 2rem 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,7 +173,7 @@ body {
 
 .container-inicio {
   position: relative;
-  max-width: 750px;
+  max-width: 1000px;
   width: 100%;
 }
 
@@ -211,21 +192,19 @@ body {
   color: #333;
 }
 
-
-
-.logo-inicio {
-  max-width: 900px;
-  margin-bottom: 1rem;
-}
-
 .slogan {
   background-color: #f6c3b6;
   color: white;
   padding: 0.8rem 1.6rem;
   border-radius: 20px;
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-inicio {
+  max-width: 900px;
+  margin-bottom: 1rem;
 }
 
 .section h2,
@@ -453,21 +432,14 @@ hr {
 }
 
 #feedbacks .depoimento-card p {
-  color: #ffff; /* Altere essa cor conforme desejar */
+  color: #d49469;
 }
 
 #feedbacks .depoimento-card strong {
   color: #794f38; /* Cor do nome da aluna */
 }
 
-.sobre-estilizada {
-  background-color: #ffe2da; /* cor de fundo suave, troque se quiser */
-  border-radius: 30px;       /* bordas arredondadas */
-  padding: 40px;             /* espaço interno */
-  max-width: 1000px;
-  margin: 40px auto;         /* centraliza horizontalmente */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* sombra leve */
-}
+
 
 @media (max-width: 768px) {
   .sobre-container {
