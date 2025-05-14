@@ -25,6 +25,7 @@ body {
 }
 
 .navbar .logo {
+  align-items: center;
   font-family: 'Meow Script', cursive;
   font-size: 2rem;
   font-weight: bold;
@@ -580,8 +581,9 @@ hr {
   }
 
   .navbar .logo {
-    flex: 1 0 100%;
-    margin-bottom: 0.5rem;
+    align-items: center;
+    flex: 1 0 20%;
+    margin-bottom: 1.2rem;
     text-align: center;
   }
 }
