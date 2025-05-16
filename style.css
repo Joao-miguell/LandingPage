@@ -703,28 +703,5 @@ hr {
   right: 10px;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center; /* Centraliza tudo */
-  }
-
-  .navbar .logo {
-    order: 1; /* Garante que a logo fique no centro */
-    text-align: center;
-    width: 100%;
-  }
-
-  .menu-toggle {
-    order: 0; /* Botão do menu hamburguer antes da logo */
-    align-self: flex-end;
-  }
-
-  .nav-links {
-    order: 2;
-    width: 100%;
-    align-items: center;
-  }
-}
 
 
