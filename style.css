@@ -29,8 +29,13 @@ body {
   font-weight: bold;
   color: #d49469;
   line-height: 1;
-  position: relative;
-  top: 12px; /* ajuste fino, experimente valores como 1px ou -1px */
+}
+
+@media (max-width: 768px) {
+  .navbar .logo {
+    position: relative;
+    top: 12px;
+  }
 }
 
 
