@@ -212,26 +212,28 @@
 
   <!-- JavaScript -->
   <script>
-  // Rolagem suave ao clicar nos links internos da navbar
+  // Referências principais
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  // Abrir/fechar menu mobile ao clicar no botão
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  // Rolagem suave ao clicar nos links internos + fechar menu
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const destino = document.querySelector(this.getAttribute('href'));
       destino.scrollIntoView({ behavior: 'smooth' });
 
-      // Fecha o menu após o clique no link
+      // Fecha o menu após o clique no link (mobile)
       navLinks.classList.remove('show');
     });
   });
 
-  // Abrir/fechar menu mobile
-  const toggleBtn = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-
+  // Botão "voltar ao topo"
   const btnVoltar = document.getElementById("btn-voltar-topo");
 
   window.addEventListener("scroll", () => {
@@ -246,29 +248,30 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  // Carrossel
   document.querySelectorAll('.carousel').forEach(carousel => {
-  const inner = carousel.querySelector('.carousel-inner');
-  const images = inner.querySelectorAll('.carousel-img');
-  let index = 0;
+    const inner = carousel.querySelector('.carousel-inner');
+    const images = inner.querySelectorAll('.carousel-img');
+    let index = 0;
 
-  const updateSlide = () => {
-    inner.style.transform = `translateX(-${index * 100}%)`;
-  };
+    const updateSlide = () => {
+      inner.style.transform = `translateX(-${index * 100}%)`;
+    };
 
-  carousel.querySelector('.next').addEventListener('click', () => {
-    index = (index + 1) % images.length;
-    updateSlide();
+    carousel.querySelector('.next').addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      updateSlide();
+    });
+
+    carousel.querySelector('.prev').addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      updateSlide();
+    });
+
+    updateSlide(); // inicia na posição 0
   });
-
-  carousel.querySelector('.prev').addEventListener('click', () => {
-    index = (index - 1 + images.length) % images.length;
-    updateSlide();
-  });
-
-  updateSlide(); // inicia na posição 0
-});
-
 </script>
+
 
 
 </body>
