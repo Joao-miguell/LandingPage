@@ -16,21 +16,24 @@ body {
   background-color: #ffe2da;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* já centraliza verticalmente os itens */
   padding: 1rem 2rem;
-  position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar .logo {
-  align-items: center;
   font-family: 'Meow Script', cursive;
   font-size: 2rem;
   font-weight: bold;
   color: #d49469;
+  line-height: 1;
+  position: relative;
+  top: 12px; /* ajuste fino, experimente valores como 1px ou -1px */
 }
+
+
 
 .navbar nav a {
   font-family: 'Spectral', sans-serif;
