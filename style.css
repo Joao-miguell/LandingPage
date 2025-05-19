@@ -10,6 +10,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--branco);
   color: var(--preto);
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -733,4 +734,12 @@ hr {
   }
 }
 
+#btn-voltar-topo {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
