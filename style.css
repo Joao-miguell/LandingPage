@@ -743,3 +743,81 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+/* Modal escuro ao fundo */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+
+/* Conteúdo da modal */
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #d49469;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  color: #794f38;
+  animation: aparecer 0.3s ease;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    font-size: 0.95em;
+  }
+}
+
+
+/* Animação */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botão de fechar */
+.fechar {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #d49469;
+  font-weight: bold;
+}
+
+/* Botão + Info */
+.btn-info {
+  background-color: #d49469;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-info:hover {
+  background-color: #b9744d;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .curso-card .btn,
+  .curso-card .btn-info {
+    display: block;
+    margin: 5px 0;
+  }
+}
