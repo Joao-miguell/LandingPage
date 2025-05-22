@@ -830,3 +830,69 @@ html, body {
   color: #d49469; /* muda a cor opcionalmente ao abrir */
   transform: rotate(90deg); /* leve rotação opcional */
 }
+
+.porque-escolher {
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+}
+
+.porque-escolher h2 {
+  font-family: 'Lexend Tera', sans-serif;
+  text-align: center;
+  font-size: 2.2rem;
+  color: #794f38;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.porque-escolher h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--rosa-claro);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.cards-escolha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-escolha {
+  background-color: white;
+  border: 2px solid var(--tom-terroso);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-escolha:hover {
+  transform: translateY(-5px);
+}
+
+.card-escolha i {
+  font-size: 2.5rem;
+  color: var(--tom-terroso);
+  margin-bottom: 1rem;
+}
+
+.card-escolha h3 {
+  font-family: 'Harmattan', sans-serif;
+  font-size: 1.5rem;
+  color: #794f38;
+  margin-bottom: 0.5rem;
+}
+
+.card-escolha p {
+  font-family: 'Spectral', sans-serif;
+  color: #d49469;
+  font-size: 1rem;
+  line-height: 1.6;
+}
