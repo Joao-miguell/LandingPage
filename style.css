@@ -580,7 +580,7 @@ hr {
 
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 83px;
     right: 0;
     left: 0;
     background-color: #ffe2da;
@@ -820,4 +820,13 @@ html, body {
     display: block;
     margin: 5px 0;
   }
+}
+
+.menu-toggle {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-toggle.open {
+  color: #d49469; /* muda a cor opcionalmente ao abrir */
+  transform: rotate(90deg); /* leve rotação opcional */
 }

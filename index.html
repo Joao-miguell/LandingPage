@@ -276,68 +276,70 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
   // Referências principais
-  const toggleBtn = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+const toggleBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const btnVoltar = document.getElementById("btn-voltar-topo");
 
-  // Abrir/fechar menu mobile ao clicar no botão
-  toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-
-  // Rolagem suave ao clicar nos links internos + fechar menu
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const destino = document.querySelector(this.getAttribute('href'));
-      destino.scrollIntoView({ behavior: 'smooth' });
-
-      // Fecha o menu após o clique no link (mobile)
-      navLinks.classList.remove('show');
-    });
-  });
-
-  // Botão "voltar ao topo"
-  const btnVoltar = document.getElementById("btn-voltar-topo");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 500) {
-      btnVoltar.classList.add("show");
-    } else {
-      btnVoltar.classList.remove("show");
-    }
-  });
-
-  btnVoltar.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // Carrossel
-  document.querySelectorAll('.carousel').forEach(carousel => {
-    const inner = carousel.querySelector('.carousel-inner');
-    const images = inner.querySelectorAll('.carousel-img');
-    let index = 0;
-
-    const updateSlide = () => {
-      inner.style.transform = `translateX(-${index * 100}%)`;
-    };
-
-    // Avança automaticamente a cada 3 segundos
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      updateSlide();
-    }, 3000);
-
-    updateSlide();
-  });
-
-  // Inicializa animações do AOS
-  AOS.init({
-  easing: 'ease-out-out',  
-  duration: 800,              
-  once: false,                
-  offset: 100,                
+// Toggle menu mobile e alternar ícone
+toggleBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+  toggleBtn.classList.toggle('open');
+  toggleBtn.textContent = toggleBtn.classList.contains('open') ? '✕' : '☰';
 });
 
+// Rolagem suave ao clicar nos links internos + fechar menu
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const destino = document.querySelector(this.getAttribute('href'));
+    destino.scrollIntoView({ behavior: 'smooth' });
+
+    navLinks.classList.remove('show');
+    toggleBtn.classList.remove('open');
+    toggleBtn.textContent = '☰';
+  });
+});
+
+// Botão "voltar ao topo"
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 500) {
+    btnVoltar.classList.add("show");
+  } else {
+    btnVoltar.classList.remove("show");
+  }
+});
+
+btnVoltar.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Carrossel
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const inner = carousel.querySelector('.carousel-inner');
+  const images = inner.querySelectorAll('.carousel-img');
+  let index = 0;
+
+  const updateSlide = () => {
+    inner.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    updateSlide();
+  }, 3000);
+
+  updateSlide();
+});
+
+// Inicializa animações do AOS
+AOS.init({
+  easing: 'ease-out',
+  duration: 800,
+  once: false,
+  offset: 100,
+});
+
+// Funções para abrir/fechar modais
 function abrirModal(id) {
   document.getElementById(id).style.display = "block";
 }
@@ -346,18 +348,16 @@ function fecharModal(id) {
   document.getElementById(id).style.display = "none";
 }
 
+// Fecha modal clicando fora da área
 window.addEventListener('click', function(event) {
-    const modais = document.querySelectorAll('.modal');
-    modais.forEach(modal => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
+  document.querySelectorAll('.modal').forEach(modal => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
   });
+});
+
+
 </script>
-
-
-
-
 </body>
 </html>
