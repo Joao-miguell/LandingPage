@@ -635,6 +635,12 @@ hr {
   z-index: 1000;
 }
 
+@media (max-width: 768px) {
+  #btn-voltar-topo {
+    padding: 10px 12px;
+  }
+}
+
 #btn-voltar-topo:hover {
   transform: scale(1.1);
   opacity: 0.9;
@@ -923,6 +929,13 @@ html, body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+@media (max-width: 768px) {
+  #btn-whatsapp {
+    padding: 10px 12px;
+    bottom: 70px;
+  }
+} 
 
 #btn-whatsapp.show {
   display: block;
