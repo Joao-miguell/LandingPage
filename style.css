@@ -960,3 +960,12 @@ html, body {
 .btn-animar {
   animation: aparecerAnimado 0.4s ease-out;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
