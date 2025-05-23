@@ -403,8 +403,13 @@ body {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+}
+
+@media (min-width: 769px) {
+  .linha-rodape-inferior {
+    justify-content: space-between;
+  }
 }
 
 .copy {
@@ -623,11 +628,16 @@ hr {
   background-color: #d49469;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
+  padding: 14px 16px;
+  border-radius: 15%;
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
+}
+
+#btn-voltar-topo:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
 }
 
 #btn-voltar-topo.show {
@@ -895,4 +905,46 @@ html, body {
   color: #d49469;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+/* Botão do WhatsApp */
+#btn-whatsapp {
+  display: none;
+  position: fixed;
+  bottom: 90px; /* Fica acima do botão de voltar ao topo */
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  padding: 14px 16px;
+  border-radius: 15%;
+  font-size: 24px;
+  z-index: 1000;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#btn-whatsapp.show {
+  display: block;
+}
+
+/* Animação ao passar o mouse */
+#btn-whatsapp:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+@keyframes aparecerAnimado {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-animar {
+  animation: aparecerAnimado 0.4s ease-out;
 }

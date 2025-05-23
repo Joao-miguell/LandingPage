@@ -289,7 +289,13 @@
     </div>
   </footer>
   
-  <button id="btn-voltar-topo" title="Voltar ao topo">↑</button>
+  <a href="https://wa.me/5544998618601" id="btn-whatsapp" target="_blank" title="Fale conosco no WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+  <button id="btn-voltar-topo" title="Voltar ao topo">
+  <i class="fas fa-chevron-up"></i>
+  </button>
+
 
   
   
@@ -301,6 +307,7 @@
 const toggleBtn = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const btnVoltar = document.getElementById("btn-voltar-topo");
+const btnWhats = document.getElementById("btn-whatsapp");
 
 // Toggle menu mobile e alternar ícone
 toggleBtn.addEventListener('click', () => {
@@ -322,15 +329,18 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   });
 });
 
-// Botão "voltar ao topo"
+// Exibir botões ao rolar a página com animação
 window.addEventListener("scroll", () => {
   if (window.scrollY > 500) {
-    btnVoltar.classList.add("show");
+    btnVoltar.classList.add("show", "btn-animar");
+    btnWhats.classList.add("show", "btn-animar");
   } else {
-    btnVoltar.classList.remove("show");
+    btnVoltar.classList.remove("show", "btn-animar");
+    btnWhats.classList.remove("show", "btn-animar");
   }
 });
 
+// Ação ao clicar no botão "voltar ao topo"
 btnVoltar.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
