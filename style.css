@@ -11,16 +11,24 @@ body {
   background-color: var(--branco);
   color: var(--preto);
   overflow-x: hidden;
+  padding-top: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .navbar {
   background-color: #ffe2da;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* já centraliza verticalmente os itens */
+  align-items: center;
   padding: 1rem 2rem;
-  top: 0;
-  z-index: 1000;
 }
 
 .navbar .logo {
@@ -30,16 +38,6 @@ body {
   color: #d49469;
   line-height: 1;
 }
-
-@media (max-width: 768px) {
-  .navbar .logo {
-    position: relative;
-    top: 12px;
-    right: 20px;
-  }
-}
-
-
 
 .navbar nav a {
   font-family: 'Spectral', sans-serif;
@@ -115,18 +113,6 @@ body {
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-  .sobre-container {
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .sobre-texto {
-    font-size: 1rem;
-  }
-}
-
 .cursos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -145,8 +131,6 @@ body {
   background-color: transparent;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
-
 
 .curso-img {
   width: 100%;
@@ -170,182 +154,12 @@ body {
 }
 
 .depoimento-card {
-  background-color: transparent; /* Removendo o fundo */
+  background-color: transparent;
   padding: 2rem;
   border-radius: 8px;
   font-style: italic;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border: 2px solid #d49469; /* Adicionando borda */
-}
-
-
-.footer {
-  background-color: #794f38;
-  color: var(--branco);
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 4rem;
-}
-
-/* Nova seção início com imagem e sobreposição */
-.secao-inicio {
-  background-color: #ffffff;
-  padding: 6rem 2rem 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-inicio {
-  position: relative;
-  max-width: 1000px;
-  width: 100%;
-}
-
-.imagem-inicio {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.texto-sobreposto {
-  position: absolute;
-  bottom: 5%; 
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: #333;
-}
-
-.slogan {
-  font-family: 'Spectral', sans-serif;
-  font-weight: 400;
-  background-color: #f6c3b6;
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  display: inline-block;
-  font-size: 1.4rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.logo-inicio {
-  max-width: 900px;
-  margin-bottom: 1rem;
-}
-
-.section h2,
-#depoimentos h2,
-#contato h2 {
-  font-family: 'Lexend Tera', sans-serif;
-  text-align: center;
-  font-size: 2.2rem; /* aumenta o tamanho */
-  margin-bottom: 2rem;
-  color: #794f38; /* opcional: para destacar */
-}
-
-.section h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: #f6c3b6;
-  margin: 0.5rem auto 0;
-  border-radius: 2px;
-}
-
-.imagem-sobre {
-  width: 100%;
-  max-width: 350px; /* ajuste esse valor conforme preferir */
-  height: auto;
-  border-radius: 12px; /* mantém cantos levemente arredondados, mas não deixa redondo */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* opcional: sombra para destacar */
-}
-
-@media (max-width: 600px) {
-  .imagem-sobre {
-    max-width: 100%;
-  }
-}
-
-.logo img {
-  height: 50px; /* ajuste conforme o tamanho desejado */
-  width: auto;
-}
-
-.rodape {
-  background-color: #d49469;
-  color: white;
-  padding: 30px 20px 10px;
-  font-family: 'Arial', sans-serif;
-}
-
-.rodape-conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  text-align: center;
-}
-
-.rodape-info h2 {
-  margin: 0;
-  font-size: 24px;
-}
-
-.rodape-info p {
-  margin: 5px 0;
-}
-
-.rodape-contato p {
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.botao-social {
-  display: inline-block;
-  margin: 0 8px;
-  width: 36px;
-  height: 36px;
-  background-color: white;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: transform 0.3s;
-}
-
-.botao-social img {
-  width: 100%;
-  height: auto;
-}
-
-.botao-social:hover {
-  transform: scale(1.1);
-}
-
-.rodape-copy {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-.botao-social {
-  background-color: white;
-  color: #d49469;
-  font-size: 18px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  margin: 0 8px;
-  transition: transform 0.3s;
-}
-
-.botao-social:hover {
-  transform: scale(1.1);
-  color: #794f38;
+  border: 2px solid #d49469;
 }
 
 .rodape-personalizado {
@@ -353,6 +167,8 @@ body {
   color: white;
   padding: 40px 20px 20px;
   font-family: 'Arial', sans-serif;
+  margin-top: 4rem;
+  text-align: center;
 }
 
 .container-rodape {
@@ -406,12 +222,6 @@ body {
   align-items: center;
 }
 
-@media (min-width: 769px) {
-  .linha-rodape-inferior {
-    justify-content: space-between;
-  }
-}
-
 .copy {
   font-size: 14px;
 }
@@ -434,6 +244,112 @@ hr {
   margin: 30px 0 15px;
 }
 
+.secao-inicio {
+  background-color: #ffffff;
+  padding: 6rem 2rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-inicio {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.imagem-inicio {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.texto-sobreposto {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #333;
+}
+
+.slogan {
+  font-family: 'Spectral', sans-serif;
+  font-weight: 400;
+  background-color: #f6c3b6;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 1.4rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-inicio {
+  max-width: 900px;
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+
+.section h2,
+#depoimentos h2,
+#contato h2 {
+  font-family: 'Lexend Tera', sans-serif;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #794f38;
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #f6c3b6;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.imagem-sobre {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.botao-social {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s, color 0.3s;
+  font-size: 18px;
+  color: #d49469;
+}
+
+.botao-social img {
+  width: 100%;
+  height: auto;
+}
+
+.botao-social:hover {
+  transform: scale(1.1);
+  color: #794f38;
+}
+
+
 #cursos .btn {
   background-color: #f6c3b6;
   color: white;
@@ -446,11 +362,10 @@ hr {
 }
 
 #cursos .btn:hover {
-  background-color: #e8b0a8; /* tom um pouco mais escuro ao passar o mouse */
+  background-color: #e8b0a8;
   transform: scale(1.05);
 }
 
-/* Título dos cursos */
 .curso-card h3 {
   font-size: 25px;
   color: #794f38;
@@ -458,7 +373,6 @@ hr {
   font-family: 'Harmattan', sans-serif;
 }
 
-/* Texto de descrição dos cursos */
 .curso-card p {
   font-family: 'Spectral', sans-serif;
   color: #d49469;
@@ -469,158 +383,36 @@ hr {
 }
 
 #feedbacks .depoimento-card strong {
-  color: #794f38; /* Cor do nome da aluna */
+  color: #794f38;
 }
 
-
-
-@media (max-width: 768px) {
-  .sobre-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .curso-card {
-    min-height: auto;
-  }
-
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar nav a {
-    margin: 0.5rem 0;
-  }
-
-  .secao-inicio {
-    padding: 13rem 2rem;
-  }
-
-  .texto-sobreposto {
-    position: static;
-    transform: none;
-    margin-top: 1rem;
-  }
-}
-
-/* Menu hamburguer visível apenas em telas pequenas */
 .menu-toggle {
   display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #d49469;
-  cursor: pointer;
-}
-
-/* Esconde o menu em telas pequenas até clicar */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px; /* abaixo do header */
-    right: 0;
-    background-color: #ffe2da;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    flex-direction: column;
-    align-items: center;
-    transition: max-height 0.4s ease-in-out;
-  }
-
-  .nav-links a {
-    margin: 1rem 0;
-    font-size: 1.2rem;
-  }
-
-  .nav-links.show {
-    max-height: 300px; /* ou o suficiente para mostrar todos os links */
-  }
-}
-
-
-.menu-toggle {
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
   color: #d49469;
-  position: absolute;
-  top: 1rem;
-  right: 2rem;
-  z-index: 1100;
-  display: none; /* Esconde no desktop */
-}
-
-/* Ajuste da posição do menu hamburguer */
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #d49469;
-  cursor: pointer;
   position: absolute;
   top: 1.2rem;
   right: 2rem;
   z-index: 1001;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Oculta nav-links no mobile */
+.menu-toggle.open {
+  color: #d49469;
+  transform: rotate(90deg);
+}
+
 .nav-links {
   display: flex;
   gap: 1rem;
   transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 83px;
-    right: 0;
-    left: 0;
-    background-color: #ffe2da;
-    flex-direction: column;
-    align-items: center; /* centraliza os links */
-    justify-content: center;
-    width: 100%;
-    padding: 1rem 0;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .nav-links.show {
-    max-height: 300px;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .navbar {
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .navbar .logo {
-    align-items: center;
-    flex: 1 0 20%;
-    margin-bottom: 1.2rem;
-    text-align: center;
-  }
-}
-
 #btn-voltar-topo {
-  display: none; /* Esconde por padrão */
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -632,12 +424,8 @@ hr {
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
-}
-
-@media (max-width: 768px) {
-  #btn-voltar-topo {
-    padding: 10px 12px;
-  }
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 #btn-voltar-topo:hover {
@@ -727,39 +515,6 @@ hr {
   right: 10px;
 }
 
-/* Navbar fixa somente em telas maiores */
-@media (min-width: 769px) {
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #ffe2da; /* sua cor atual */
-    height: 70px; /* ajuste conforme a altura original */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-
-  body {
-    padding-top: 70px; /* espaço para não cobrir o conteúdo */
-  }
-}
-
-#btn-voltar-topo {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* Modal escuro ao fundo */
 .modal {
   display: none;
   position: fixed;
@@ -772,9 +527,6 @@ html, body {
   background-color: rgba(0,0,0,0.5);
 }
 
-
-
-/* Conteúdo da modal */
 .modal-content {
   background-color: #fff;
   margin: auto;
@@ -789,21 +541,11 @@ html, body {
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .modal-content {
-    width: 95%;
-    font-size: 0.95em;
-  }
-}
-
-
-/* Animação */
 @keyframes aparecer {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Botão de fechar */
 .fechar {
   float: right;
   font-size: 1.5rem;
@@ -812,7 +554,6 @@ html, body {
   font-weight: bold;
 }
 
-/* Botão + Info */
 .btn-info {
   background-color: #d49469;
   color: white;
@@ -827,23 +568,6 @@ html, body {
 .btn-info:hover {
   background-color: #b9744d;
   transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .curso-card .btn,
-  .curso-card .btn-info {
-    display: block;
-    margin: 5px 0;
-  }
-}
-
-.menu-toggle {
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.menu-toggle.open {
-  color: #d49469; /* muda a cor opcionalmente ao abrir */
-  transform: rotate(90deg); /* leve rotação opcional */
 }
 
 .porque-escolher {
@@ -912,11 +636,10 @@ html, body {
   line-height: 1.6;
 }
 
-/* Botão do WhatsApp */
 #btn-whatsapp {
   display: none;
   position: fixed;
-  bottom: 90px; /* Fica acima do botão de voltar ao topo */
+  bottom: 90px;
   right: 20px;
   background-color: #25D366;
   color: white;
@@ -929,43 +652,145 @@ html, body {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  #btn-whatsapp {
-    padding: 10px 12px;
-    bottom: 70px;
-  }
-} 
-
 #btn-whatsapp.show {
   display: block;
 }
 
-/* Animação ao passar o mouse */
 #btn-whatsapp:hover {
   transform: scale(1.1);
   opacity: 0.9;
 }
 
 @keyframes aparecerAnimado {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .btn-animar {
   animation: aparecerAnimado 0.4s ease-out;
 }
 
-* {
-  box-sizing: border-box;
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .navbar .logo {
+    position: relative;
+    top: 12px;
+    right: 20px;
+    align-items: center;
+    flex: 1 0 20%;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .navbar nav a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .sobre-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .sobre-texto {
+    font-size: 1rem;
+  }
+
+  .curso-card {
+    min-height: auto;
+  }
+
+   .curso-card .btn,
+   .curso-card .btn-info {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .secao-inicio {
+    padding: 13rem 2rem;
+  }
+
+  .texto-sobreposto {
+    position: static;
+    transform: none;
+    margin-top: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 83px;
+    right: 0;
+    left: 0;
+    background-color: #ffe2da;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    max-height: 390px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #btn-voltar-topo {
+    padding: 10px 12px;
+  }
+
+  .modal-content {
+    width: 95%;
+    font-size: 0.95em;
+  }
+
+  #btn-whatsapp {
+    padding: 10px 12px;
+    bottom: 70px;
+  }
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+@media (max-width: 600px) {
+  .imagem-sobre {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  body {
+    padding-top: 70px;
+  }
+
+  .linha-rodape-inferior {
+    justify-content: space-between;
+  }
 }
