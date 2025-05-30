@@ -11,7 +11,7 @@ body {
   background-color: var(--branco);
   color: var(--preto);
   overflow-x: hidden;
-  padding-top: 0;
+  padding-top: 70px;
 }
 
 * {
@@ -28,15 +28,46 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .navbar .logo {
   font-family: 'meow script', cursive;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 550;
   color: #d49469;
   line-height: 1;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #d49469;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-toggle.open {
+  color: #d49469;
+  transform: rotate(90deg);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
 
 .navbar nav a {
@@ -386,31 +417,6 @@ hr {
   color: #794f38;
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #d49469;
-  position: absolute;
-  top: 1.2rem;
-  right: 2rem;
-  z-index: 1001;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.menu-toggle.open {
-  color: #d49469;
-  transform: rotate(90deg);
-}
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
-}
-
 #btn-voltar-topo {
   display: none;
   position: fixed;
@@ -517,28 +523,33 @@ hr {
 
 .modal {
   display: none;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   z-index: 1200;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: auto; 
   background-color: rgba(0,0,0,0.5);
+  padding: 20px; 
 }
 
 .modal-content {
   background-color: #fff;
-  margin: auto;
+  margin: 0; 
   padding: 20px;
   border: 2px solid #d49469;
   border-radius: 8px;
   width: 90%;
-  max-width: 600px;
+  max-width: 600px; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   color: #794f38;
   animation: aparecer 0.3s ease;
   box-sizing: border-box;
+  max-height: 90vh; 
+  overflow-y: auto; 
 }
 
 @keyframes aparecer {
@@ -672,26 +683,53 @@ hr {
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1000;
+    flex-direction: row;
+    align-items: center;
   }
 
   .navbar .logo {
-    position: relative;
-    top: 12px;
-    right: 20px;
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: static;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #ffe2da;
+    width: 100%;
+    flex-direction: column;
     align-items: center;
-    flex: 1 0 20%;
-    margin-bottom: 1.2rem;
-    text-align: center;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.show {
+    padding: 1rem 0;
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .navbar nav a {
-    margin: 1rem 0;
-    font-size: 1.2rem;
+    margin: 0;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
   }
 
   .sobre-container {
@@ -724,36 +762,6 @@ hr {
     margin-top: 1rem;
   }
 
-  .menu-toggle {
-    display: block;
-    z-index: 1001;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 83px;
-    right: 0;
-    left: 0;
-    background-color: #ffe2da;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 0;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
-    z-index: 999;
-  }
-
-  .nav-links.show {
-    max-height: 390px;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
   #btn-voltar-topo {
     padding: 10px 12px;
   }
@@ -775,22 +783,54 @@ hr {
   }
 }
 
-@media (min-width: 769px) {
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 70px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
+.ver-video-link {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-family: 'Spectral', sans-serif;
+  font-size: 1rem;
+  color: #794f38;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-align: center;
+}
 
-  body {
-    padding-top: 70px;
-  }
+.ver-video-link:hover {
+  color: var(--rosa-claro);
+}
 
-  .linha-rodape-inferior {
-    justify-content: space-between;
-  }
+.ver-video-link i {
+  margin-right: 8px;
+}
+
+.modal-video-content {
+  max-width: 800px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-top: 15px;
+  background-color: #000;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.modal-video-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--tom-terroso);
+  text-align: center;
 }

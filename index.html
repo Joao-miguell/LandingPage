@@ -15,6 +15,17 @@
   <link rel="stylesheet" href="style.css">
   <meta name="description" content="Cursos de manicure e nail designer com Francieli Carrard. Descubra como conquistar sua independência financeira com técnicas profissionais e atendimento de qualidade.">
 </head>
+
+<div class="modal" id="modal-video-apresentacao">
+  <div class="modal-content modal-video-content">
+    <span class="fechar" onclick="fecharModal('modal-video-apresentacao')">×</span>
+    <h3>Vídeo de Apresentação</h3>
+    <div class="video-container">
+      
+    </div>
+  </div>
+</div>
+
 <body>
 
   <!-- Cabeçalho -->
@@ -42,19 +53,23 @@
   <section id="sobre" class="section sobre-estilizada">
   <h2 class="titulo-centralizado" data-aos="zoom-in">Quem é Francieli Carrard</h2>
   <div class="sobre-container">
-    <div class="sobre-imagem"data-aos="zoom-out" >
+    <div class="sobre-imagem" data-aos="zoom-out">
       <img src="imgs/foto-francieli.jpg" alt="Francieli Carrard" class="imagem-sobre">
+      <a href="#" class="ver-video-link" onclick="abrirVideoApresentacao(event)">
+        <i class="fas fa-chevron-down"></i> Ver vídeo de apresentação
+      </a>
     </div>
-    <div class="sobre-texto" >
+    <div class="sobre-texto">
       <p data-aos="fade-left">
         Olá, me chamo Francieli Carrard, tenho 40 anos e atuo como manicure desde os 14. Há 4 anos, me especializei como Nail Designer, trazendo mais técnica e beleza ao meu trabalho.
       </p>
       <p data-aos="fade-left">
         Meu maior objetivo é elevar a autoestima das minhas clientes por meio de um atendimento acolhedor e profissional. Mais do que entregar unhas lindas e bem feitas, busco proporcionar uma verdadeira experiência de cuidado e bem-estar.
       </p>
-      <a data-aos="fade-left"href="https://wa.me/5544997135700?text=Olá%2C+gostaria+de+saber+mais+sobre+seus+cursos%21" target="_blank" class="botao-whatsapp">
+      <a data-aos="fade-left" href="https://wa.me/5544997135700?text=Olá%2C+gostaria+de+saber+mais+sobre+seus+cursos%21" target="_blank" class="botao-whatsapp">
          <i class="fab fa-whatsapp"></i> Fale comigo no WhatsApp
       </a>
+    </div>
   </div>
 </section>
 
@@ -302,21 +317,18 @@
 
   <!-- JavaScript -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-  // Referências principais
+<script>
 const toggleBtn = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const btnVoltar = document.getElementById("btn-voltar-topo");
 const btnWhats = document.getElementById("btn-whatsapp");
 
-// Toggle menu mobile e alternar ícone
 toggleBtn.addEventListener('click', () => {
   navLinks.classList.toggle('show');
   toggleBtn.classList.toggle('open');
   toggleBtn.textContent = toggleBtn.classList.contains('open') ? '✕' : '☰';
 });
 
-// Rolagem suave ao clicar nos links internos + fechar menu
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
@@ -329,7 +341,6 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   });
 });
 
-// Exibir botões ao rolar a página com animação
 window.addEventListener("scroll", () => {
   if (window.scrollY > 500) {
     btnVoltar.classList.add("show", "btn-animar");
@@ -340,12 +351,10 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Ação ao clicar no botão "voltar ao topo"
 btnVoltar.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Carrossel
 document.querySelectorAll('.carousel').forEach(carousel => {
   const inner = carousel.querySelector('.carousel-inner');
   const images = inner.querySelectorAll('.carousel-img');
@@ -363,7 +372,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   updateSlide();
 });
 
-// Inicializa animações do AOS
 AOS.init({
   easing: 'ease-out',
   duration: 800,
@@ -371,25 +379,53 @@ AOS.init({
   offset: 100,
 });
 
-// Funções para abrir/fechar modais
 function abrirModal(id) {
-  document.getElementById(id).style.display = "block";
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = "flex";
+  }
 }
 
 function fecharModal(id) {
-  document.getElementById(id).style.display = "none";
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = "none";
+    
+    if (id === 'modal-video-apresentacao') {
+      const videoContainer = modal.querySelector('.video-container');
+      if (videoContainer) {
+        videoContainer.innerHTML = ''; 
+      }
+    }
+  }
 }
 
-// Fecha modal clicando fora da área
 window.addEventListener('click', function(event) {
   document.querySelectorAll('.modal').forEach(modal => {
     if (event.target === modal) {
-      modal.style.display = "none";
+      fecharModal(modal.id); 
     }
   });
 });
 
+function abrirVideoApresentacao(event) {
+  event.preventDefault();
+  const videoModal = document.getElementById('modal-video-apresentacao');
+  const videoContainer = videoModal.querySelector('.video-container');
+  
+  const youtubeVideoEmbedUrl = "https://www.youtube.com/embed/COLOQUE_O_ID_DO_SEU_VIDEO_AQUI?autoplay=1&rel=0"; 
 
+  videoContainer.innerHTML = ''; 
+  
+  const iframe = document.createElement('iframe');
+  iframe.setAttribute('src', youtubeVideoEmbedUrl); 
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+  iframe.setAttribute('allowfullscreen', '');
+  videoContainer.appendChild(iframe);
+  
+  abrirModal('modal-video-apresentacao');
+}
 </script>
 </body>
 </html>
