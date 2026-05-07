@@ -3,6 +3,7 @@
   --tom-terroso: #d49469;
   --branco: #ffffff;
   --preto: #333333;
+  --floating-stack-offset: 70px;
 }
 
 body {
@@ -471,29 +472,47 @@ hr {
 }
 
 #btn-voltar-topo {
-  display: none;
+  display: flex;
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #d49469;
   color: white;
   border: none;
-  padding: 14px 16px;
-  border-radius: 15%;
-  font-size: 20px;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 12px;
   cursor: pointer;
   z-index: 1000;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  --btn-translate: 20px;
+  --btn-scale: 1;
+  transform: translateY(var(--btn-translate)) scale(var(--btn-scale));
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 #btn-voltar-topo:hover {
-  transform: scale(1.1);
+  --btn-scale: 1.1;
   opacity: 0.9;
 }
 
 #btn-voltar-topo.show {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  --btn-translate: 0px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#btn-voltar-topo i {
+  font-size: 22px;
 }
 
 .botao-whatsapp {
@@ -705,27 +724,38 @@ hr {
 }
 
 #btn-whatsapp {
-  display: none;
+  display: flex;
   position: fixed;
-  bottom: 90px;
+  bottom: 20px;
   right: 20px;
   background-color: #25D366;
   color: white;
-  padding: 14px 16px;
-  border-radius: 15%;
-  font-size: 24px;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 12px;
   z-index: 1000;
   text-decoration: none;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  --btn-scale: 1;
+  transform: scale(var(--btn-scale));
+  transition: opacity 0.3s ease, transform 0.3s ease, bottom 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
-#btn-whatsapp.show {
-  display: block;
+body.has-voltar-topo #btn-whatsapp {
+  bottom: calc(20px + var(--floating-stack-offset));
+}
+
+#btn-whatsapp i {
+  font-size: 22px;
 }
 
 #btn-whatsapp:hover {
-  transform: scale(1.1);
+  --btn-scale: 1.1;
   opacity: 0.9;
 }
 
@@ -739,6 +769,10 @@ hr {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --floating-stack-offset: 60px;
+  }
+
   .navbar {
     flex-direction: row;
     align-items: center;
@@ -826,8 +860,15 @@ hr {
     margin-top: 1rem;
   }
 
-  #btn-voltar-topo {
-    padding: 10px 12px;
+  #btn-voltar-topo,
+  #btn-whatsapp {
+    width: 44px;
+    height: 44px;
+  }
+
+  #btn-voltar-topo i,
+  #btn-whatsapp i {
+    font-size: 20px;
   }
 
   .modal-content {
@@ -836,8 +877,7 @@ hr {
   }
 
   #btn-whatsapp {
-    padding: 10px 12px;
-    bottom: 70px;
+    bottom: 20px;
   }
 }
 

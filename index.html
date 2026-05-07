@@ -333,41 +333,41 @@
 const toggleBtn = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const btnVoltar = document.getElementById("btn-voltar-topo");
-const btnWhats = document.getElementById("btn-whatsapp");
 
 const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 toggleBtn.addEventListener('click', () => {
   navLinks.classList.toggle('show');
   toggleBtn.classList.toggle('open');
   toggleBtn.textContent = toggleBtn.classList.contains('open') ? '✕' : '☰';
-});
   toggleBtn.setAttribute('aria-expanded', toggleBtn.classList.contains('open') ? 'true' : 'false');
   toggleBtn.setAttribute('aria-label', toggleBtn.classList.contains('open') ? 'Fechar menu' : 'Abrir menu');
+});
 
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
     const destino = document.querySelector(this.getAttribute('href'));
-    destino.scrollIntoView({ behavior: 'smooth' });
     destino.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     navLinks.classList.remove('show');
     toggleBtn.classList.remove('open');
     toggleBtn.textContent = '☰';
-  });
     toggleBtn.setAttribute('aria-expanded', 'false');
     toggleBtn.setAttribute('aria-label', 'Abrir menu');
+  });
 });
 
-window.addEventListener("scroll", () => {
+const updateScrollButtons = () => {
   if (window.scrollY > 500) {
-    btnVoltar.classList.add("show", "btn-animar");
-    btnVoltar.classList.add("show", "btn-animar");
-    btnWhats.classList.add("show", "btn-animar");
+    btnVoltar.classList.add("show");
+    document.body.classList.add("has-voltar-topo");
   } else {
-    btnVoltar.classList.remove("show", "btn-animar");
-    btnWhats.classList.remove("show", "btn-animar");
+    btnVoltar.classList.remove("show");
+    document.body.classList.remove("has-voltar-topo");
   }
-});
+};
+
+window.addEventListener("scroll", updateScrollButtons);
+updateScrollButtons();
 
 btnVoltar.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
