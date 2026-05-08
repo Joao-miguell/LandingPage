@@ -569,7 +569,8 @@ if (!reduceMotion && window.AOS) {
 function abrirModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
-    modal.style.display = "flex";
+    modal.classList.remove('is-closing');
+    modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = "hidden";
     const focusTarget = modal.querySelector('.fechar');
@@ -580,16 +581,25 @@ function abrirModal(id) {
 function fecharModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
-    modal.style.display = "none";
+    modal.classList.add('is-closing');
+    modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = "";
     
-    if (id === 'modal-video-apresentacao') {
-      const videoContainer = modal.querySelector('.video-container');
-      if (videoContainer) {
-        videoContainer.innerHTML = ''; 
+    const onEnd = (e) => {
+      if (e.target !== modal) return;
+      if (e.propertyName !== 'opacity') return;
+      modal.removeEventListener('transitionend', onEnd);
+      modal.classList.remove('is-closing');
+      if (id === 'modal-video-apresentacao') {
+        const videoContainer = modal.querySelector('.video-container');
+        if (videoContainer) {
+          videoContainer.innerHTML = '';
+        }
       }
-    }
+    };
+
+    modal.addEventListener('transitionend', onEnd);
   }
 }
 
@@ -603,7 +613,7 @@ window.addEventListener('click', function(event) {
 
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
-    const aberto = Array.from(document.querySelectorAll('.modal')).find(m => m.style.display === 'flex');
+    const aberto = Array.from(document.querySelectorAll('.modal')).find(m => m.classList.contains('is-open'));
     if (aberto) fecharModal(aberto.id);
   }
 });
