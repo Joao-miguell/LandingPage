@@ -360,12 +360,19 @@ hr {
   max-width: 1000px;
   text-align: center;
   color: #794f38;
+  text-wrap: pretty;
 }
 
 .hero-texto h1 {
   font-family: 'Lexend Tera', sans-serif;
   font-size: 2.1rem;
   margin: 0 0 0.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 26ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
 }
 
 .hero-texto p {
@@ -1101,11 +1108,17 @@ body.has-voltar-topo #btn-whatsapp {
   }
 
   .hero-texto h1 {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
   }
 
   .hero-texto p {
     font-size: 1.05rem;
+  }
+
+  .hero-texto {
+    text-wrap: balance;
   }
 
   .hero-beneficios {
