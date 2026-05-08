@@ -45,16 +45,15 @@ html, body {
   z-index: 1000;
   height: var(--navbar-height);
   border-radius: 18px;
-  border: 1px solid rgba(212, 148, 105, 0.35);
-  background-color: rgba(255, 226, 218, 0.88);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 148, 105, 0.45);
+  background-color: #ffe2da;
   box-shadow: 0 10px 28px rgba(0,0,0,0.12);
   transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, transform 0.28s ease, opacity 0.28s ease;
 }
 
 .navbar.is-scrolled {
-  background-color: rgba(255, 226, 218, 0.96);
-  border-color: rgba(212, 148, 105, 0.45);
+  background-color: #ffe2da;
+  border-color: rgba(212, 148, 105, 0.55);
   box-shadow: 0 14px 34px rgba(0,0,0,0.16);
 }
 
@@ -1123,9 +1122,8 @@ body.has-voltar-topo #btn-whatsapp {
     top: calc(var(--navbar-offset) + var(--navbar-height) + 10px);
     left: 12px;
     right: 12px;
-    background-color: rgba(255, 226, 218, 0.92);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 148, 105, 0.35);
+    background-color: #ffe2da;
+    border: 1px solid rgba(212, 148, 105, 0.45);
     border-radius: 16px;
     flex-direction: column;
     align-items: center;
