@@ -397,8 +397,15 @@
 const toggleBtn = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const btnVoltar = document.getElementById("btn-voltar-topo");
+const navbar = document.querySelector('.navbar');
 
 const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lastScrollY = window.scrollY;
+let autoScrollingUntil = 0;
+
+const markAutoScroll = (ms = 700) => {
+  autoScrollingUntil = Date.now() + ms;
+};
 
 const closeMenu = () => {
   navLinks.classList.remove('show');
@@ -410,6 +417,7 @@ const closeMenu = () => {
 };
 
 const scrollToTop = () => {
+  markAutoScroll(900);
   window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
 };
 
@@ -421,6 +429,9 @@ toggleBtn.addEventListener('click', () => {
   toggleBtn.setAttribute('aria-label', toggleBtn.classList.contains('open') ? 'Fechar menu' : 'Abrir menu');
   document.body.classList.toggle('menu-open', navLinks.classList.contains('show'));
   document.body.classList.toggle('no-scroll', navLinks.classList.contains('show'));
+  if (navbar) {
+    navbar.classList.remove('is-hidden');
+  }
 });
 
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
@@ -434,6 +445,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     }
     const destino = document.querySelector(href);
     if (destino) {
+      markAutoScroll(900);
       destino.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     }
     closeMenu();
@@ -460,12 +472,34 @@ document.querySelectorAll('a.js-scroll-to[href^="#"]').forEach(link => {
     e.preventDefault();
     const destino = document.querySelector(this.getAttribute('href'));
     if (destino) {
+      markAutoScroll(900);
       destino.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     }
   });
 });
 
 const updateScrollButtons = () => {
+  const now = Date.now();
+  const currentY = window.scrollY;
+
+  if (navbar) {
+    navbar.classList.toggle('is-scrolled', window.scrollY > 10);
+    if (document.body.classList.contains('menu-open')) {
+      navbar.classList.remove('is-hidden');
+    } else if (currentY < 120) {
+      navbar.classList.remove('is-hidden');
+    } else if (now > autoScrollingUntil) {
+      const delta = currentY - lastScrollY;
+      if (delta > 8) {
+        navbar.classList.add('is-hidden');
+      } else if (delta < -8) {
+        navbar.classList.remove('is-hidden');
+      }
+    }
+  }
+
+  lastScrollY = currentY;
+
   if (window.scrollY > 500) {
     btnVoltar.classList.add("show");
     document.body.classList.add("has-voltar-topo");
