@@ -399,6 +399,8 @@ toggleBtn.addEventListener('click', () => {
   toggleBtn.textContent = toggleBtn.classList.contains('open') ? '✕' : '☰';
   toggleBtn.setAttribute('aria-expanded', toggleBtn.classList.contains('open') ? 'true' : 'false');
   toggleBtn.setAttribute('aria-label', toggleBtn.classList.contains('open') ? 'Fechar menu' : 'Abrir menu');
+  document.body.classList.toggle('menu-open', navLinks.classList.contains('show'));
+  document.body.classList.toggle('no-scroll', navLinks.classList.contains('show'));
 });
 
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
@@ -411,7 +413,19 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     toggleBtn.textContent = '☰';
     toggleBtn.setAttribute('aria-expanded', 'false');
     toggleBtn.setAttribute('aria-label', 'Abrir menu');
+    document.body.classList.remove('menu-open', 'no-scroll');
   });
+});
+
+document.addEventListener('click', (e) => {
+  if (!navLinks.classList.contains('show')) return;
+  if (navLinks.contains(e.target) || toggleBtn.contains(e.target)) return;
+  navLinks.classList.remove('show');
+  toggleBtn.classList.remove('open');
+  toggleBtn.textContent = '☰';
+  toggleBtn.setAttribute('aria-expanded', 'false');
+  toggleBtn.setAttribute('aria-label', 'Abrir menu');
+  document.body.classList.remove('menu-open', 'no-scroll');
 });
 
 document.querySelectorAll('a.js-scroll-to[href^="#"]').forEach(link => {
