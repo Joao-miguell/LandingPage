@@ -393,6 +393,20 @@ const navLinks = document.querySelector('.nav-links');
 const btnVoltar = document.getElementById("btn-voltar-topo");
 
 const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const closeMenu = () => {
+  navLinks.classList.remove('show');
+  toggleBtn.classList.remove('open');
+  toggleBtn.textContent = '☰';
+  toggleBtn.setAttribute('aria-expanded', 'false');
+  toggleBtn.setAttribute('aria-label', 'Abrir menu');
+  document.body.classList.remove('menu-open', 'no-scroll');
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+};
+
 toggleBtn.addEventListener('click', () => {
   navLinks.classList.toggle('show');
   toggleBtn.classList.toggle('open');
@@ -406,26 +420,33 @@ toggleBtn.addEventListener('click', () => {
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
-    const destino = document.querySelector(this.getAttribute('href'));
-    destino.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-    navLinks.classList.remove('show');
-    toggleBtn.classList.remove('open');
-    toggleBtn.textContent = '☰';
-    toggleBtn.setAttribute('aria-expanded', 'false');
-    toggleBtn.setAttribute('aria-label', 'Abrir menu');
-    document.body.classList.remove('menu-open', 'no-scroll');
+    const href = this.getAttribute('href');
+    if (href === '#inicio') {
+      scrollToTop();
+      closeMenu();
+      return;
+    }
+    const destino = document.querySelector(href);
+    if (destino) {
+      destino.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    closeMenu();
+  });
+});
+
+document.querySelectorAll('a[href="#inicio"]').forEach(link => {
+  if (link.closest('nav')) return;
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollToTop();
+    closeMenu();
   });
 });
 
 document.addEventListener('click', (e) => {
   if (!navLinks.classList.contains('show')) return;
   if (navLinks.contains(e.target) || toggleBtn.contains(e.target)) return;
-  navLinks.classList.remove('show');
-  toggleBtn.classList.remove('open');
-  toggleBtn.textContent = '☰';
-  toggleBtn.setAttribute('aria-expanded', 'false');
-  toggleBtn.setAttribute('aria-label', 'Abrir menu');
-  document.body.classList.remove('menu-open', 'no-scroll');
+  closeMenu();
 });
 
 document.querySelectorAll('a.js-scroll-to[href^="#"]').forEach(link => {
@@ -452,7 +473,7 @@ window.addEventListener("scroll", updateScrollButtons);
 updateScrollButtons();
 
 btnVoltar.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  scrollToTop();
 });
 
 const initFaqAnimation = () => {
