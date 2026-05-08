@@ -68,11 +68,18 @@ html, body {
   left: 10px;
 }
 
+.menu-toggle:focus,
+a:focus,
+button:focus {
+  outline: none;
+}
+
 .menu-toggle:focus-visible,
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid var(--rosa-claro);
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(246, 195, 182, 0.85);
+  border-radius: 12px;
 }
 
 .menu-toggle {
