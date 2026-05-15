@@ -750,12 +750,7 @@ function abrirVideoApresentacao(event) {
   
   videoContainer.innerHTML = ''; 
   
-  const youtubeVideoEmbedUrl = "https://www.youtube.com/embed/COLOQUE_O_ID_DO_SEU_VIDEO_AQUI?autoplay=1&rel=0"; 
-  if (youtubeVideoEmbedUrl.includes('COLOQUE_O_ID_DO_SEU_VIDEO_AQUI')) {
-    videoContainer.textContent = 'Defina o ID do vídeo no código para exibir aqui.';
-    abrirModal('modal-video-apresentacao');
-    return;
-  }
+  const youtubeVideoEmbedUrl = "https://www.youtube.com/embed/hPr-Yc92qaY?autoplay=1&rel=0"; 
 
   const iframe = document.createElement('iframe');
   iframe.setAttribute('src', youtubeVideoEmbedUrl); 
