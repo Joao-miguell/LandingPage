@@ -835,11 +835,20 @@ hr {
   height: 100%;
 }
 
+
+.carousel-inner picture {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .carousel-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
+  display: block;
 }
 
 .carousel button {
