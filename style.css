@@ -1,3 +1,12 @@
+/* Fallback: se o JS do AOS não carregar (ex: bloqueado pelo navegador),
+   garante que o conteúdo fique visível em vez de invisível */
+html:not(.aos-initialized) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: auto !important;
+}
+
 :root {
   --rosa-claro: #f6c3b6;
   --tom-terroso: #d49469;
