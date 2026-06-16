@@ -1,10 +1,29 @@
-/* Fallback: se o JS do AOS não carregar (ex: bloqueado pelo navegador),
-   garante que o conteúdo fique visível em vez de invisível */
-html:not(.aos-initialized) [data-aos] {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-  pointer-events: auto !important;
+/* Animações de scroll customizadas (substitui biblioteca AOS) */
+[data-aos] {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(28px);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-28px);
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 :root {

@@ -11,7 +11,7 @@
   <link rel="preload" as="image" href="imgs/imagem-principal.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Meow+Script&family=Harmattan&family=Spectral:wght@400&family=Lexend+Tera&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="aos.css" rel="stylesheet">
+
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
   <meta name="description" content="Cursos de manicure e nail designer com Francieli Carrard. Descubra como conquistar sua independência financeira com técnicas profissionais e atendimento de qualidade.">
@@ -446,7 +446,7 @@
 
   </main>
   <!-- JavaScript -->
-  <script src="aos.js"></script>
+
 <script>
 const toggleBtn = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -682,15 +682,27 @@ const initCarousels = () => {
 
 initCarousels();
 
-if (!reduceMotion && window.AOS) {
-  AOS.init({
-    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-    duration: 700,
-    once: true,
-    mirror: false,
-    offset: 120,
-  });
-}
+// Animações de scroll com IntersectionObserver nativo (sem biblioteca externa)
+(function initScrollAnimations() {
+  const elements = document.querySelectorAll('[data-aos]');
+  if (!elements.length) return;
+
+  if (reduceMotion) {
+    elements.forEach(el => el.classList.add('aos-animate'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const delay = parseInt(entry.target.getAttribute('data-aos-delay') || '0', 10);
+      setTimeout(() => entry.target.classList.add('aos-animate'), delay);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  elements.forEach(el => observer.observe(el));
+})();
 
 function abrirModal(id) {
   const modal = document.getElementById(id);
