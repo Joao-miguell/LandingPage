@@ -1267,7 +1267,6 @@ body::before {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.28);
-  backdrop-filter: blur(2px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1284,7 +1283,6 @@ body.menu-open::before {
 
 @media (prefers-reduced-motion: reduce) {
   body::before {
-    backdrop-filter: none;
     transition: none;
   }
 }
