@@ -62,6 +62,7 @@ img {
 
 h1, h2, h3, h4 {
   font-family: var(--fonte-titulo);
+  font-variant-numeric: lining-nums;
   color: var(--cafe);
   font-weight: 500;
   line-height: 1.18;
@@ -469,6 +470,24 @@ a {
   font-size: 0.8rem;
 }
 
+.hero-texto h1 sup {
+  font-size: 0.4em;
+  vertical-align: super;
+  color: var(--dourado-escuro);
+}
+
+.hero-nota {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  opacity: 0.85;
+}
+
+.hero-nota a {
+  color: var(--dourado-escuro);
+  font-weight: 600;
+}
+
 .hero-visual {
   position: relative;
   max-width: 460px;
@@ -625,6 +644,134 @@ a {
 
 .perfil-card p {
   color: var(--texto-suave);
+}
+
+/* ---------- Simulador ---------- */
+
+.simulador {
+  background: var(--nude);
+}
+
+.simulador-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.simulador-texto h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+}
+
+.simulador-texto p {
+  margin-top: 18px;
+  font-size: 1.08rem;
+  color: var(--texto-suave);
+}
+
+.simulador-card {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 24px;
+  padding: 36px 32px 28px;
+  box-shadow: var(--sombra);
+  display: grid;
+  gap: 24px;
+}
+
+.sim-campo {
+  display: grid;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.sim-campo > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--cafe-medio);
+}
+
+.sim-campo strong,
+.sim-resultado strong,
+.hero-selo-topo strong,
+.barra-item strong {
+  font-variant-numeric: lining-nums;
+}
+
+.sim-campo strong {
+  font-family: var(--fonte-titulo);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cafe);
+}
+
+.sim-campo input[type="range"] {
+  --progresso: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  margin: 8px 0;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--dourado) var(--progresso), var(--nude) var(--progresso));
+  cursor: pointer;
+}
+
+.sim-campo input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--branco);
+  border: 3px solid var(--dourado-escuro);
+  box-shadow: 0 4px 12px rgba(149, 104, 60, 0.35);
+}
+
+.sim-campo input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--branco);
+  border: 3px solid var(--dourado-escuro);
+  box-shadow: 0 4px 12px rgba(149, 104, 60, 0.35);
+}
+
+.sim-resultado {
+  display: grid;
+  gap: 2px;
+  padding: 22px 24px;
+  border-radius: var(--raio);
+  text-align: center;
+  background:
+    radial-gradient(300px 160px at 50% 0%, rgba(210, 171, 124, 0.35), transparent 70%),
+    var(--cafe);
+}
+
+.sim-resultado span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dourado-claro);
+}
+
+.sim-resultado strong {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--branco);
+}
+
+.sim-nota {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--texto-suave);
+  text-align: center;
 }
 
 /* ---------- Cursos ---------- */
@@ -1725,14 +1872,22 @@ body.has-voltar-topo #btn-whatsapp {
 
   .incluso-grid,
   .sobre-grid,
-  .faq-grid {
+  .faq-grid,
+  .simulador-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
 
   .incluso-texto,
-  .faq-intro {
+  .faq-intro,
+  .simulador-texto {
     text-align: center;
+  }
+
+  .simulador-card {
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .faq-intro {
@@ -1879,6 +2034,14 @@ body.has-voltar-topo #btn-whatsapp {
   .rodape-grid {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .simulador-card {
+    padding: 28px 20px 22px;
+  }
+
+  .simulador-card .btn {
+    white-space: normal;
   }
 
   .modal-content {
